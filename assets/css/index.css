@@ -1,0 +1,7 @@
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  height: 60px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
