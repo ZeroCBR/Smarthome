@@ -14,7 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/arduinoAPI/';
+
+$config['base_url']	= 'http://172.16.26.238/arduinoAPI/'; //'http://localhost/arduinoAPI/';
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +225,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'adefalkjlasjdfioaefa!#!@qwer0';
 
 /*
 |--------------------------------------------------------------------------

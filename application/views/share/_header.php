@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <script src= "http://code.jquery.com/jquery.js"></script>
 <script src= '<?= base_url()."assets/js/bootstrap.min.js"?>' ></script>
+<script src= '<?= base_url()."assets/js/index.js"?>' ></script>
 <link href= '<?= base_url()."assets/css/bootstrap.min.css"?>' rel= "stylesheet" media= "screen" >
 <link href= '<?= base_url()."assets/css/index.css"?>' rel="stylesheet" media= "screen" >
 </head>
