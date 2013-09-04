@@ -14,6 +14,6 @@
 		if(isset($addr))
 			$this->load->view($addr); 
 		else
-			echo "Hello World !";
+			echo uri_string();
 	?>
 </div>
