@@ -15,7 +15,7 @@
 |
 */
 
-$config['base_url']	= 'http://172.16.26.238/arduinoAPI/'; //'http://localhost/arduinoAPI/';
+$config['base_url']	= 'http://localhost/smarthome/'; 
 
 /*
 |--------------------------------------------------------------------------

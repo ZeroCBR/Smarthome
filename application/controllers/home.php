@@ -16,6 +16,13 @@
 			$this->load->view('index', $data);
 		}
 	
+		function register_page(){
+ 		 	$data['addr'] = "account/register";
+                        $data['title'] = "Register";
+                        $this->load->view('index', $data);
+
+		}
+	
 	}
 
 ?>
