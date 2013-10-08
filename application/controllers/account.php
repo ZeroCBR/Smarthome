@@ -6,7 +6,11 @@
 			parent::__construct();
 			$this->load->library('session');
                         $this->load->model('account_model');
-                        $this->output->enable_profiler(TRUE);
+                       // $this->output->enable_profiler(TRUE);
+		}
+		
+		function index(){
+                        $this->load->view('account/index');
 		}
 
 		function login(){

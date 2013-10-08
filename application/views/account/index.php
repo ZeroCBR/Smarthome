@@ -10,5 +10,7 @@
 	</div>	
 </div>
 <div class="container">
-
+	<?php
+		$this -> load -> view('account/login_form');
+	?>
 </div>

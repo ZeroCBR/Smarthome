@@ -10,17 +10,15 @@
 			$this->load->view('index', $data);
 		}
 		
-		function login_page(){
-			$data['addr'] = "account/login";
- 			$data['title'] = "Sign In";
-			$this->load->view('index', $data);
-		}
-	
 		function register_page(){
  		 	$data['addr'] = "account/register";
                         $data['title'] = "Register";
                         $this->load->view('index', $data);
 
+		}
+		
+		function about(){
+			$this -> load -> view('public/about');
 		}
 	
 	}
