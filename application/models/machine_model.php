@@ -9,6 +9,14 @@
 		function __construct(){
 			parent::__construct();
 		}
+
+		function machineList($email){
+			$query = $this->db->get_where('users', array('email'=>$email )) -> result();
+			//echo var_dump($query[0]->id);
+			$machine_list=$this->db->get_where('machines', array('user_id'=>$query[0]->id )) -> result();
+			//echo var_dump($machine_list);
+			return $machine_list;
+		}
 				
 	}
 

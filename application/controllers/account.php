@@ -5,8 +5,8 @@
 		function __construct(){
 			parent::__construct();
 			$this->load->library('session');
-                        $this->load->model('account_model');
-                       // $this->output->enable_profiler(TRUE);
+                     $this->load->model('account_model');
+			$this->load->model('machine_model');
 		}
 		
 		function index(){
@@ -15,7 +15,9 @@
 
 		function login(){
 			if($this->account_model->login($_POST)){
-				echo "Sign in sucessfully";
+				$machine_list=$this->machine_model->machineList($_POST['email']);
+				$data = array("machine_list" => $machine_list);
+				$this->load->view("machine/index",$data);
 			}
 			else
 				echo "Failed";
