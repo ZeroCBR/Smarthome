@@ -1,5 +1,5 @@
 <?php
-	$this->load->view('share/_header');
+	$this->load->view('machine/add_task_form');
 ?>
 
 <table class="table table-striped">
@@ -19,7 +19,7 @@
 			<td>$value->name</td>
 			<td>$value->annotation</td>
 			<td>$value->created_time</td>
-			<td><a href='#'><img src= '".base_url()."assets/image/add.png' width='35' height='35'/></a></td>
+			<td><a href='#'data-toggle='modal' data-target='#modal'><img src= '".base_url()."assets/image/add.png' width='35' height='35'/></a></td>
 		</tr>";
 	}
 	?>
