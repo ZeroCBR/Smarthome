@@ -5,22 +5,31 @@
 		function __construct(){
 			parent::__construct();
 			$this->load->library('session');
-                     $this->load->model('account_model');
-			$this->load->model('machine_model');
+                        $this->load->model('account_model');
 		}
 		
 		function index(){
                         $this->load->view('account/index');
+			$this->load->view('account/login_form');
 		}
+		
+		function usr_info(){
+			$this->load->view('share/_login_nav');			
+		}		
 
 		function login(){
 			if($this->account_model->login($_POST)){
-				$machine_list=$this->machine_model->machineList($_POST['email']);
-				$data = array("machine_list" => $machine_list);
-				$this->load->view("machine/index",$data);
+				redirect("account/usr_info","refresh");
 			}
 			else
 				echo "Failed";
+		}
+
+		function logout(){
+			$this->session->unset_userdata('email');
+			$this->session->unset_userdata('username');
+			$this->session->unset_userdata('uid');
+			redirect("home/","refresh");
 		}
 
 		function register(){

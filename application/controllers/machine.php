@@ -7,9 +7,16 @@
 	
 		function __construct(){
 			parent::__construct();
+			$this->load->model('machine_model');
 		}
-			
-		
+
+		function index(){
+			if($this->session->userdata("email") && $this->session->userdata("username")){
+				$machine_list=$this->machine_model->machineList($this->session->userdata['email']);
+                        	$data = array("machine_list" => $machine_list);
+                        	$this->load->view("machine/index",$data);
+			}
+		}
 	
 	}
 

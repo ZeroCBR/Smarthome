@@ -24,6 +24,8 @@
 				$query = $this->db->get_where('users', array('email'=>$user['email'] )) -> result();
 				$password =md5( md5($user['password']).$query[0]->salt );
 				if($password === $query[0]->hashed_password ){
+					$this->session-> set_userdata(array("email"=>$query[0]->email,"username" => $query[0]->username,
+									    "uid" => $query[0]->id));
 					return true;
 				}		
 			}
