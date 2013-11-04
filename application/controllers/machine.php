@@ -17,6 +17,10 @@
                         	$this->load->view("machine/index",$data);
 			}
 		}
+		
+		function add_machine(){
+			redirect("machine/index","refresh");
+		}
 	
 	}
 

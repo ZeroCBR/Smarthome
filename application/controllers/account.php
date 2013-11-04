@@ -35,6 +35,7 @@
 		function register(){
 			if($this->account_model->register($_POST)){
 				echo "Register Sucessfully";
+				redirect("account/","refresh");
 			}
 		}
 
