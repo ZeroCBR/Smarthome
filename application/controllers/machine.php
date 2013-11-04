@@ -12,14 +12,16 @@
 
 		function index(){
 			if($this->session->userdata("email") && $this->session->userdata("username")){
-				$machine_list=$this->machine_model->machineList($this->session->userdata['email']);
+				$machine_list=$this->machine_model->list_machine($this->session->userdata['email']);
                         	$data = array("machine_list" => $machine_list);
                         	$this->load->view("machine/index",$data);
 			}
 		}
 		
 		function add_machine(){
-			redirect("machine/index","refresh");
+			if($this->machine_model->add_machine($_POST)){
+				redirect("machine",refresh);
+			}
 		}
 	
 	}

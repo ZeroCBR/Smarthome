@@ -1,10 +1,11 @@
 <?php
         if($machine_list==null){
-                echo "<h2>Sorry, you don't have any machine!</h2>";
+                echo "<div class='row'><h2>Sorry, you don't have any machine!</h2></div>";
         }
 	else{
 		$this->load->view('machine/add_task_form');
-		echo "<table class='table table-striped'>
+		$this->load->view('machine/edit_machine_form');
+		echo "<div class='row'><table class='table table-striped'>
 	        	<tr>
         	        	<th>Image</th>
                 		<th>Machine Name</th>
@@ -19,13 +20,17 @@
                         		<td>$value->annotation</td>
                         		<td>$value->created_time</td>
                         		<td>
-						<a href='#'data-toggle='modal' data-target='#modal'>
-						<img src= '".base_url()."assets/image/add.png' width='35' height='35'/>
+						<a  data-toggle='modal' data-target='#edit_machine_modal'>
+							<i class='glyphicon glyphicon-pencil'></i>
+						</a>
+						&nbsp&nbsp
+						<a>
+							<i class='glyphicon glyphicon-trash'></i>
 						</a>
 					</td>
                 		</tr>";
 		}
-		echo"</table>";
+		echo"</table></div>";
 	}
 ?>
 
