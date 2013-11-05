@@ -12,9 +12,7 @@
 
 		function list_machine($email){
 			$query = $this->db->get_where('users', array('email'=>$email )) -> result();
-			//echo var_dump($query[0]->id);
 			$machine_list=$this->db->get_where('machines', array('user_id'=>$query[0]->id )) -> result();
-			//echo var_dump($machine_list);
 			return $machine_list;
 		}
 		
@@ -37,6 +35,24 @@
 				return false;
 			}
 			return true;
+		}
+		
+		function edit_machine($mid,$machine){
+			if($this->get_machine($mid)){
+				$this->db->where("id",$mid);
+				$this->db->update('machines',$machine);
+				return true;
+			}
+			return false;
+		}
+
+		function get_machine($id){
+			$this->db->select("id,name,user_id,annotation");
+			$query = $this->db->get_where("machines",array('id'=>$id,'user_id'=>$this->session->userdata('uid')))->result();
+			if(sizeof($query)){
+				return $query[0];
+			}
+			return false;
 		}
 				
 	}

@@ -23,7 +23,49 @@
 				redirect("machine",refresh);
 			}
 		}
-	
+		
+		function edit_machine(){
+			$mid = intval($this->uri->segment(3));
+			if(isset($this->session->userdata['uid'])){
+				$machine['name'] = $_POST['name'];
+				$machine['annotation'] = $_POST['annotation'];
+				if($this->machine_model->edit_machine($mid,$machine)){
+					redirect("machine",refresh);
+				}
+			}
+			echo "Error\n";	
+		}
+			
+		function edit_machine_form(){
+		 	$machine = $this->machine_model->get_machine($_POST['id']);				
+			$form = "<div class='modal-header'>
+                                	<button type='button' class='close' data-dismiss='modal' aria-hidden='tru'>&times;</button>
+                                	<h4 class='modal-title' id='myModalLabel'>Edit Machine</h4>
+                        	</div>
+				<form class='form-horizontal' action = '".site_url("machine/edit_machine")."/".$_POST['id']."' method='post' >
+                                <div class='modal-body'>
+                                        <div class='form-group'>
+                                                <label class='col-sm-4 control-label' for='name'>Name</label>
+                                                <div class = 'col-sm-6'>
+                                                        <input id='name' name='name' class='form-control' value = '".$machine->name."'/>
+                                                </div>
+                                        </div>
+                                        <div class='form-group'>
+                                                <label class='col-sm-4 control-label' for='annotation'>Annotation</label>
+                                                <div class = 'col-sm-6'>
+                                                       <textarea id='annotation' name='annotation' class='form-control rows='3'>".$machine->annotation."</textarea>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class='modal-footer'>
+                                        <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+                                        <input type='submit' class='btn btn-primary' value ='Apply It!'>
+                                </div>
+                        </form>";
+			
+			echo $form;
+		}
+			
 	}
 
 

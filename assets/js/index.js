@@ -1,7 +1,12 @@
-$(document).ready(function(){
-//	$("#nav-bar").children().bind('click',function(event){
-// 		$(this).children('.active').removeClass('active');
-//		$(this).addClass('active');
-//		console.log(event.target);		
-//	});	
+var loaded = false;
+$(document).ready(function () {
+	if(!loaded){ 
+		$('.edit-machine').click(function(event){
+                        //$.ajax({
+                        //      url:<?php site_url("machine/get_machine_info")."/id="?> $(this).attr('data-id'),
+                        //});
+         		console.log(<?php site_url("machine/get_machine_info")."/id="?> $(this).attr('data-id'));
+		});
+	}
+	loaded = true;
 });

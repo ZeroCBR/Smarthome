@@ -20,7 +20,7 @@
                         		<td>$value->annotation</td>
                         		<td>$value->created_time</td>
                         		<td>
-						<a  data-toggle='modal' data-target='#edit_machine_modal'>
+						<a data-toggle='modal' class='edit-machine' data-id = '$value->id'>
 							<i class='glyphicon glyphicon-pencil'></i>
 						</a>
 						&nbsp&nbsp
@@ -33,5 +33,21 @@
 		echo"</table></div>";
 	}
 ?>
-
-
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.edit-machine').click(function(event){
+		$.ajax({
+			type: "post",
+			data: "id="+$(this).attr('data-id'),
+        	      	url : "<?= site_url("machine/edit_machine_form")?>",
+       			success: function(result){
+				$("#edit_machine_modal .modal-content").html(result);
+				$("#edit_machine_modal").modal("show");
+			},
+			error: function(){
+                        	alert("ajax error");
+                        }
+		});
+	});
+});
+</script>
