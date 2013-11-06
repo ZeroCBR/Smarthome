@@ -35,7 +35,16 @@
 			}
 			echo "Error\n";	
 		}
-			
+
+		function delete_machine(){
+			$mid = intval($this->uri->segment(3));
+			if(isset($this->session->userdata['uid'])){
+				$this->machine_model->delete_machine($mid);
+				redirect('machine',refresh);	
+			}
+			echo "Error\n";
+		}
+				
 		function edit_machine_form(){
 		 	$machine = $this->machine_model->get_machine($_POST['id']);				
 			$form = "<div class='modal-header'>
@@ -64,6 +73,22 @@
                         </form>";
 			
 			echo $form;
+		}
+		
+		function delete_machine_form(){
+			$machine = $this->machine_model->get_machine($_POST['id']);
+			$result ="<div class='modal-header'>
+                                	<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                                	<h4 class='modal-title' id='myModalLabel'>System Message</h4>
+                        	  </div>
+                        	  <div class='modal-body '>
+                                       <h3> <span>Are you confirm to delete ".$machine->name." ?</span> </h3>
+                                  </div>
+                        	  <div class='modal-footer'>
+                                	<button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+                                	<a class='btn btn-success' href='".site_url("machine/delete_machine")."/".$_POST['id']."'>Delete</a>
+                        	  </div>";
+			echo $result;
 		}
 			
 	}

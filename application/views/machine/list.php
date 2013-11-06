@@ -5,6 +5,7 @@
 	else{
 		$this->load->view('machine/add_task_form');
 		$this->load->view('machine/edit_machine_form');
+		$this->load->view('machine/delete_machine_form');
 		echo "<div class='row'><table class='table table-striped'>
 	        	<tr>
         	        	<th>Image</th>
@@ -24,7 +25,7 @@
 							<i class='glyphicon glyphicon-pencil'></i>
 						</a>
 						&nbsp&nbsp
-						<a>
+						<a data-toggle='modal' class='delete-machine' data-id = '$value->id' >
 							<i class='glyphicon glyphicon-trash'></i>
 						</a>
 					</td>
@@ -48,6 +49,20 @@ $(document).ready(function(){
                         	alert("ajax error");
                         }
 		});
+	});
+	$('.delete-machine').click(function(){
+		$.ajax({
+                        type: "post",
+                        data: "id="+$(this).attr('data-id'),
+                        url : "<?= site_url("machine/delete_machine_form")?>",
+                        success: function(result){
+                                $("#delete_machine_modal .modal-content").html(result);
+                                $("#delete_machine_modal").modal("show");
+                        },
+                        error: function(){
+                                alert("ajax error");
+                        }
+                });
 	});
 });
 </script>

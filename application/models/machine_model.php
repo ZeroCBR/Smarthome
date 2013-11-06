@@ -37,6 +37,14 @@
 			return true;
 		}
 		
+		function delete_machine($mid){
+			if($this->get_machine($mid)){
+				$this->db->delete('machines',array('id'=>$mid,'user_id'=>$this->session->userdata('uid')));
+				return true;
+			}
+			return false;
+		}
+		
 		function edit_machine($mid,$machine){
 			if($this->get_machine($mid)){
 				$this->db->where("id",$mid);

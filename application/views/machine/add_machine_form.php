@@ -10,13 +10,13 @@
 					<div class="form-group">
 						<label class="col-sm-4 control-label" for="name">Name</label>
 						<div class = "col-sm-6">
-							<input id="name" class="form-control"/>
+							<input id="name" name= 'machine_name' class="form-control"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-4 control-label" for="annotation">Annotation</label>
 						<div class = "col-sm-6">
-							<textarea id="annotation" class="form-control"  rows="3"></textarea>
+							<textarea id="annotation" name='annotation' class="form-control"  rows="3"></textarea>
 						</div>
 					</div>
        				</div>
