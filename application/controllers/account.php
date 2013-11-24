@@ -5,11 +5,11 @@
 		function __construct(){
 			parent::__construct();
 			$this->load->library('session');
-                        $this->load->model('account_model');
+            $this->load->model('account_model');
 		}
 		
 		function index(){
-                        $this->load->view('account/index');
+            $this->load->view('account/index');
 			$this->load->view('account/login_form');
 		}
 		
