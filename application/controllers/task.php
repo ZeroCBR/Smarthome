@@ -72,7 +72,7 @@
 			//$mid = intval($this->uri->segment(3));
 			if(isset($this->session->userdata['uid'])){
 				$this->task_model->delete_task($mid);
-				redirect('task/index/'.$task->machine_id,refresh);	
+				redirect('task/index/'.$task->machine_id,'refresh');	
 			}
 			echo "Error\n";
 		}
@@ -99,7 +99,7 @@
 		function add_task(){
 			$id = intval($this->uri->segment(3));
 			if($this->task_model->add_task($_POST,$id)){
-				redirect("task/index/".$id,refresh);
+				redirect("task/index/".$id,'refresh');
 			}
 		}
 
@@ -157,7 +157,7 @@
 			$task['deadline'] = $_POST['deadline'];
 			$task['annotation'] = $_POST['annotation'];
 			if($this->task_model->edit_task($tid,$task)){
-				redirect("task/index/".$id->machine_id,refresh);
+				redirect("task/index/".$id->machine_id,'refresh');
 			
 			}
 			echo "Error\n";	

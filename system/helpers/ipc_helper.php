@@ -32,7 +32,7 @@
 	
 	if(!function_exists("ipc_send")){
 		function ipc_send($mess){
-			@msg_send($message_queue,1,$mess);
+			msg_send($message_queue,1,$mess);
 		}
 	}
 		

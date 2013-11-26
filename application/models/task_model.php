@@ -19,8 +19,6 @@
 				$task['annotation'] = $task_inf['annotation'];
 				$task['params'] = $task_inf['params'];
 				$task['machine_id'] = $id;
-				echo $id;
-				//$task['priority'] = $task_inf['priority'];
 				$task['deadline'] = $task_inf['time'];
 				$this->db->insert("tasks",$task);
 				return true;
@@ -37,12 +35,9 @@
 		}
 
 		function get_mid($task_id){
-			
-			//$this->db->select("machine_id");
 			$result = $this->db->get_where("tasks",array('id'=>$task_id))->result();
 			if(sizeof($result)){
 				return $result[0];
-				
 			}
 			return false;
 		}

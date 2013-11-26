@@ -20,7 +20,7 @@
 		
 		function add_machine(){
 			if($this->machine_model->add_machine($_POST)){
-				redirect("machine",refresh);
+				redirect("machine",'refresh');
 			}
 		}
 		
