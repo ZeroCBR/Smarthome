@@ -1,14 +1,9 @@
 <?php
-
-	$IPC_KEY = ftok("/home/john/temp/key",'a');
-        $message_queue = msg_get_queue($IPC_KEY, 0666);
-	
-
 	if(!function_exists("packing")){
 		function packing($mess_arr){
 			$mess = "";
                         if(count($mess)>0){
-                                $mess = implode(", ",$arr);
+                                $mess = implode(", ",$mess_arr);
                         }
                         return $mess;
 		}
@@ -32,7 +27,9 @@
 	
 	if(!function_exists("ipc_send")){
 		function ipc_send($mess){
-			msg_send($message_queue,1,$mess);
+			$IPC_KEY = ftok("/home/john/temp/key",'a');
+		        $message_queue = msg_get_queue($IPC_KEY, 0666);
+			msg_send($message_queue,1,$mess);	
 		}
 	}
 		

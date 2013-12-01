@@ -21,6 +21,11 @@
 				$task['machine_id'] = $id;
 				$task['deadline'] = $task_inf['time'];
 				$this->db->insert("tasks",$task);
+				if($this->session->userdata('uid')){
+					$task += array('uid'=>$this->session->userdata('uid'));
+					$mess = packing($task);
+					ipc_send($mess);
+				}
 				return true;
 			}
 			return false;
