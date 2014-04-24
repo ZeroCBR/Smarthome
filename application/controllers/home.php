@@ -18,7 +18,7 @@
 		}
 		
 		function about(){
-			$this -> load -> view('public/about');
+			$this->load->view('public/about');
 		}
 	
 	}

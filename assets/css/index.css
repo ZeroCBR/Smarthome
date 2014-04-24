@@ -1,5 +1,7 @@
 body{
-  background-color:#f7fcfe;
+	height:100%;
+	width:100%;
+	overflow:hidden;
 }
 
 /* Custom page header */
@@ -18,4 +20,28 @@ body{
 .machine-icon{
 	width:75px;
 	height:75px;
+}
+
+.index-top{
+	background:url('../image/congruent_outline.png');
+}
+
+.buttom-nav {
+	margin-left:30%;
+	margin-top:5%;
+	margin-bottom:5%;
+}
+
+.re-lo-div{
+	color:white;
+	margin-top:10%;
+	margin-bottom:10%;	
+}
+
+.re-lo-div input[class='form-control']{
+	margin-top:10px;
+}
+
+.re-lo-div button[type='submit']{
+	width:100%;
 }

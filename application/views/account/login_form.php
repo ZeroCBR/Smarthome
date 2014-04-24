@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container re-lo-div">
 	<div class="col-md-4">
 		<form class="form-signin" action='<?= site_url('account/login') ?>' method="post">
-			<h2 class="form-signin-heading">Sign in</h2>
+			<h2 class="form-signin-heading">SIGN IN</h2>
 			<input type="text" name="email" class="form-control" placeholder="Email">
 			<input type="password" name="password" class="form-control" placeholder="Password">
 			<label class="checkbox">
