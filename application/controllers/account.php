@@ -5,24 +5,36 @@
 		function __construct(){
 			parent::__construct();
 			$this->load->library('session');
-            $this->load->model('account_model');
+	                $this->load->model('account_model');
+			$this->load->model('tag_model');
 		}
 		
 		function index(){
-            $this->load->view('account/index');
+            		$this->load->view('account/index');
 			$this->load->view('account/login_form');
 		}
 		
-		function usr_info(){
-			$this->load->view('share/_login_nav');			
+		function statistics(){
+			$data = array("load_page"=>"share/_statistics_nav");
+			$this->load->view('public/index',$data);			
 		}		
 
-		function login(){
-			if($this->account_model->login($_POST)){
-				redirect("account/usr_info","refresh");
+		function login($user=NULL){
+			if(isset($user)){
+				$user_info =array('email'=>$user['email'],'password'=>$user['password']);
+				$this->account_model->login($user_info);
+				$default_tag = array("tag_name"=>"favourite","intro"=>"This is default tag for managing your Electric Appliance");
+				$this->tag_model->add_tag($default_tag);
+				redirect("account/statistics","refresh");
 			}
-			else
-				echo "Failed";
+			else{
+				$user_info =array('email'=>$_POST['email'],'password'=>$_POST['password']);
+				if($this->account_model->login($user_info)){
+					redirect("account/statistics","refresh");
+				}
+				else
+					echo "Failed";
+			}
 		}
 
 		function logout(){
@@ -34,8 +46,7 @@
 
 		function register(){
 			if($this->account_model->register($_POST)){
-				echo "Register Sucessfully";
-				redirect("account/","refresh");
+				$this->login($_POST);
 			}
 		}
 

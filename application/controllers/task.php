@@ -17,69 +17,23 @@
 
 			$task_list = $this->task_model->list_task($id);
 			
-			$data = array("task_list"=>$task_list,"id"=>$id);
+			$data = array("task_list"=>$task_list,"id"=>$id, "load_page"=>"task/task_list");
 			$this->load->view("task/index",$data);
-		}
-
-		function add_task_form(){
-
-			$from ="<div class='modal-header'>
-        			<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-        			<h4 class='modal-title' id='myModalLabel'>New Task</h4>
-      			</div>
-      			<form class='form-horizontal' action = '".site_url("task/add_task")."/".$_POST['id']."'method='post'>
-			<div class='modal-body'>
-				
-					<div class='form-group'>
-						<label class='col-sm-4 control-label' for='title'>Title</label>
-						<div class = 'col-sm-6'>
-							<input id='title' name='title' class='form-control'/>
-						</div>
-					</div>
-					<div class='form-group'>
-						<label class='col-sm-4 control-label' for='time'>Running Time</label>
-						<div class = 'col-sm-6'>
-							<input id='time' class='form-control' name='time' placeholder='YY-MM-DD hh:mm'/>
-						</div>
-					</div>
-					<div class='form-group'>
-						<label class='col-sm-4 control-label' for='annotation'>Annotation</label>
-						<div class = 'col-sm-6'>
-							<input id='annotation' name='annotation' class='form-control'/>
-						</div>
-					</div>
-					<div class='form-group'>
-						<label class='col-sm-4 control-label' for='annotation'>Parameters</label>
-						<div class = 'col-sm-6'>
-							<input id='parameters' name='params' class='form-control'/>
-						</div>
-					</div>
-       				
-			</div>
-			    
-      			<div class='modal-footer'>
-        			<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
-        			<input type='submit' class='btn btn-primary' value='Apply'>
-      			</div>
-      			</form> ";
-
-			echo $from;
 		}
 
 
 		function delete_task($mid){
-			$task = $this->task_model->get_mid($mid);
-			//$mid = intval($this->uri->segment(3));
+			$task_id = intval($this->uri->segment(4)) ;
+			$mid = intval($this->uri->segment(3));
 			if(isset($this->session->userdata['uid'])){
-				$this->task_model->delete_task($mid);
-				redirect('task/index/'.$task->machine_id,'refresh');	
+				$this->task_model->delete_task($task_id);
+				redirect('task/index/'.$mid,'refresh');	
 			}
 			echo "Error\n";
 		}
 
 
 		function delete_task_form(){
-			//$machine = $this->machine_model->get_machine($_POST['id']);
 			$task = $this->task_model->get_mid($_POST['id']);
 			$result ="<div class='modal-header'>
                                 	<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
@@ -90,16 +44,16 @@
                                   </div>
                         	  <div class='modal-footer'>
                                 	<button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
-                                	<a class='btn btn-success' href='".site_url("task/delete_task")."/".$_POST['id']."'>Delete</a>
+                                	<a class='btn btn-success' href='".site_url("task/delete_task")."/".$this->uri->segment(3)."/".$_POST['id']."'>Delete</a>
                         	  </div>";
 			echo $result;
 		}
 
 
 		function add_task(){
-			$id = intval($this->uri->segment(3));
-			if($this->task_model->add_task($_POST,$id)){
-				redirect("task/index/".$id,'refresh');
+			$mid = intval($this->uri->segment(3));
+			if($this->task_model->add_task($_POST,$mid)){
+				redirect("task/index/".$mid,'refresh');
 			}
 		}
 
@@ -110,7 +64,7 @@
                                 	<button type='button' class='close' data-dismiss='modal' aria-hidden='tru'>&times;</button>
                                 	<h4 class='modal-title' id='myModalLabel'>Edit Task</h4>
                         	</div>
-				<form class='form-horizontal' action = '".site_url("task/edit_task")."/".$_POST['id']."' method='post' >
+				<form class='form-horizontal' action = '".site_url("task/edit_task")."/".$this->uri->segment(3)."/".$_POST['id']."' method='post' >
                                 <div class='modal-body'>
                                         <div class='form-group'>
                                                 <label class='col-sm-4 control-label' for='name'>Title</label>
@@ -149,25 +103,19 @@
 			echo $form;
 		}
 
-		function edit_task($mid){
-			$tid = intval($this->uri->segment(3));
-			$id = $this->task_model->get_mid($mid);
+		function edit_task(){
+			$tid = intval($this->uri->segment(4));
+			$mid = intval($this->uri->segment(3));
 			$task['title'] = $_POST['title'];
 			$task['params'] = $_POST['params'];
 			$task['deadline'] = $_POST['deadline'];
 			$task['annotation'] = $_POST['annotation'];
 			if($this->task_model->edit_task($tid,$task)){
-				redirect("task/index/".$id->machine_id,'refresh');
-			
+				redirect("task/index/".$mid,'refresh');
 			}
 			echo "Error\n";	
 		}
 
-		function test(){
-			$this->load->view('share/_login_nav');
-		}
-		
 	}
-
 
 ?>

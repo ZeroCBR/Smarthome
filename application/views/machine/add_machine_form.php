@@ -5,7 +5,7 @@
         			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         			<h4 class="modal-title" id="myModalLabel">New Machine</h4>
        			</div>
-			<form class="form-horizontal" action = "<?= site_url("machine/add_machine")?>" method="post" >
+			<form class="form-horizontal" action = "<?= site_url("machine/add_machine")."/".$tag_id?>" method="post" >
 				<div class="modal-body">	
 					<div class="form-group">
 						<label class="col-sm-4 control-label" for="name">Name</label>
@@ -22,7 +22,7 @@
        				</div>
 				<div class="modal-footer">
          				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-         				<input type="submit" class="btn btn-primary" value ="Add It!">
+         				<input type="submit" class="btn btn-primary" value ="Done">
        				</div>
 			</form>
 		</div><!-- /.modal-content -->

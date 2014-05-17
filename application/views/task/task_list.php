@@ -1,50 +1,71 @@
 <?php
-        if($task_list==null){
-                echo "<div class='row'><h2>Sorry, you don't have any task!</h2></div>";
-        }
-	else{
-		//$this->load->view('machine/add_task_form');
-		//$this->load->view('machine/edit_machine_form');
-		//$this->load->view('machine/delete_machine_form');
-		//$this->load->view('machine/task_list',$machine_list);
-
-		echo "<div class='row'><table class='table table-striped'>
-	        	<tr>
-        	        	<th>Mechine ID</th>
-                		<th>Machine Name</th>
-	                	<th>Annotation</th>
-	                	<th>Run Time</th>
-	                	<th></th>
-        		</tr>";
-		foreach ($task_list as $value){
-                	echo "	<tr>
-                	      		<td>$value->machine_id</td>
-                        		<td>$value->title</td>
-                        		<td>$value->annotation</td>
-                        		<td>$value->deadline</td>
-                        		<td>
-						<a data-toggle='modal' class='edit-task' data-id = '$value->id'>
-							<i class='glyphicon glyphicon-pencil'></i>
-						</a>
-						&nbsp&nbsp
-						<a data-toggle='modal' class='delete-task' data-id = '$value->id' >
-							<i class='glyphicon glyphicon-trash'></i>
-						</a>
-					</td>
-                		</tr>";
-		}
-		echo"</table></div>";
-	}
+	$this->load->view("task/add_task_form");
+	$this->load->view("task/edit_task_form");
+	$this->load->view("task/delete_task_form");
 ?>
+
+<div class="container main-content col-md-10 col-md-offset-1">
+        <div class="row col-md-12 col-md-offset-11">
+                <a class="btn btn-primary add-task add-button" data-toggle="modal" data-target="#add_task_modal">
+                        <span class="glyphicon glyphicon-plus"></span>Add Task
+                </a>
+        </div>
+
+	<div class="col-md-9 col-md-offset-1">
+                <?php
+                        foreach($task_list as $task){
+                                echo "
+                                        <div class='panel row machine-panel'>
+                                                <div class='col-md-1'>
+                                                        <img class='img-circle' width='100px' height='100px' src='".base_url()."/assets/image/machine.png'></img>       
+                                                </div>
+                                                <div class='col-md-4 col-md-offset-1'>
+                                                        <h2>".$task->title."</h2>
+                                                        <p>".$task->annotation."</p>
+                                                </div>
+						<div class='col-md-2 deadline'>
+							<p>".$task->deadline."</p>
+						</div>
+                                                <div class='col-md-4  machine-btn-group'>
+                                                        <a class='btn btn-default tag-button edit-task' data-toggle='modal' data-target= '#edit_task_modal'  data-id ='".$task->id."' type = 'button'>
+                
+                                                                <span class='glyphicon glyphicon-wrench' role='button'></span> Manager
+                                                        </a>
+                                                        <button class='delete-task btn btn-warning tag-button' data-toggle='modal' data-target= '#delete_task_modal'  data-id ='".$task->id."' type = 'button'>
+
+                                                                <span class='glyphicon glyphicon-trash' role='button'></span> Delete
+                                                        </button>
+
+                                                </div>
+                                        
+                                        </div>  
+                                ";
+                        }
+
+                ?>
+	</div>
+
+		
+</div>
+
+
+
+
+
 <script type="text/javascript">
-$(document).ready(function(){
+$(document).ready(function(){	
+
+	$(".form_datetime").datetimepicker({
+		format: 'yyyy-mm-dd hh:ii',
+		autoclose: true,
+		todayBtn:true
+		});       
+
 	$('.edit-task').click(function(event){
-		console.log("asdf1");
 		$.ajax({
-			//console.log("asdf2");
 			type: "post",
 			data: "id="+$(this).attr('data-id'),
-        	      	url : "<?= site_url("task/edit_task_form")?>",
+        	      	url : "<?= site_url("task/edit_task_form")."/".$this->uri->segment(3)?>",
        			success: function(result){
 				$("#edit_task_modal .modal-content").html(result);
 				$("#edit_task_modal").modal("show");
@@ -55,13 +76,11 @@ $(document).ready(function(){
 		});
 	});
 	$('.delete-task').click(function(){
-		//console.log("asdf1");
 		$.ajax({
                         type: "post",
                         data: "id="+$(this).attr('data-id'),
-                        url : "<?= site_url("task/delete_task_form")?>",
+                        url : "<?= site_url("task/delete_task_form")."/".$this->uri->segment(3)?>",
                         success: function(result){
-
                                 $("#delete_task_modal .modal-content").html(result);
                                 $("#delete_task_modal").modal("show");
                         },

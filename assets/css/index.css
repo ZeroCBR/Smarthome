@@ -1,7 +1,7 @@
 body{
 	height:100%;
 	width:100%;
-	overflow:hidden;
+	overflow-x:hidden;
 }
 
 /* Custom page header */
@@ -44,4 +44,113 @@ body{
 
 .re-lo-div button[type='submit']{
 	width:100%;
+}
+
+.main{
+	width:100%;
+	height:100%;
+	background-image:url('../image/wallpaper-1468887.jpg');
+}
+
+.top{
+	width:100%;
+	height:65px;
+	background:white;
+	padding:10px;
+}
+
+.top-nav{
+	width:100%;
+	height:100%;
+	font-size:18px;
+}
+
+.left-nav{
+	width:320px;
+	height:100%;
+	background:#000000;
+        opacity:0.6;
+	padding-top:30px;
+}
+
+.st-intro{
+	width:100%;
+	height:40%;
+	text-align:center;
+	color:white;
+}
+
+.st-intro .nav-subheader p{
+	margin-top:30px;
+	font-size:30px;
+}
+
+.st-intro .nav-intro{
+	font-size:20px;
+	color:rgb(197, 56, 56);
+}
+
+.st-bt{
+	margin-top:150px;
+	margin-left:60px;
+}
+
+.st-bt button[type="button"]{
+	width:200px;
+	font-size:24px;
+	color:white;
+	background:#334D41;
+}
+
+#task-bt{
+	margin-top:20px;
+}
+
+.main-content{
+	margin-top:50px;	
+}
+
+.tag{
+	height:340px;
+	margin-top:20px;
+}
+
+.caption p{
+	margin-top:20px;
+}
+
+.caption .tag-intro{
+	padding-left:25px;
+	height:60px;
+}
+
+.tag-button{
+	width:98px;
+}
+
+.main-content .row{
+	margin-top:10px;
+}
+
+.modal-content{
+	margin-top:200px;
+}
+
+.machine-panel{
+	height:120px;
+	margin-top:20px;
+	padding-top:10px;
+}
+
+
+.machine-btn-group{
+	margin-top:33px;
+}
+
+.deadline{
+	padding-top:30px;
+}
+
+.add-button{
+	margin-left:100px;
 }

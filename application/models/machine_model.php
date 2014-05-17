@@ -10,18 +10,19 @@
 			parent::__construct();
 		}
 
-		function list_machine($email){
-			$query = $this->db->get_where('users', array('email'=>$email )) -> result();
-			$machine_list=$this->db->get_where('machines', array('user_id'=>$query[0]->id )) -> result();
+		function list_machine($tag_id){
+			$machine_list=$this->db->get_where('machines', array('user_id'=>$this->session->
+			userdata('uid'), 'tag_id'=>$tag_id)) -> result();
 			return $machine_list;
-		}
-		
+		}	
+	
 		function add_machine($machine_inf){
-			if(isset($machine_inf)&&!$this->check_machine($machine_inf['machine_name'])){
+			if(isset($machine_inf)){
 				$machine['name'] = $machine_inf['machine_name'];
 				$machine['annotation'] = $machine_inf['annotation'];
 				$machine['user_id'] = $this->session->userdata("uid");
 				$machine['created_time'] = date("Y-m-d H:i:s",strtotime('now'));
+				$machine['tag_id'] = $machine_inf['tag_id'];
 				$this->db->insert("machines",$machine);
 				return true;
 			}

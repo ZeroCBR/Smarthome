@@ -1,6 +1,7 @@
 <?php   
         $this->load->view('share/_header'); 
 ?>
+<body style=" overflow:hidden;">
 <div class="index-top">
 	<div class="banner">
     		<ul>
@@ -25,7 +26,7 @@
 		</div>
 	</div>	
 </div>
-
+</body>
 <script>
 $(function() {
 	var slider = $('.banner').unslider({
