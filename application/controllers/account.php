@@ -1,6 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 	class account extends CI_Controller{
+
+		private $gra_summary="";
 		
 		function __construct(){
 			parent::__construct();
@@ -14,23 +16,18 @@
 			$this->load->view('account/login_form');
 		}
 		
-		function statistics(){
-			$data = array("load_page"=>"share/_statistics_nav");
-			$this->load->view('public/index',$data);			
-		}		
-
 		function login($user=NULL){
 			if(isset($user)){
 				$user_info =array('email'=>$user['email'],'password'=>$user['password']);
 				$this->account_model->login($user_info);
 				$default_tag = array("tag_name"=>"favourite","intro"=>"This is default tag for managing your Electric Appliance");
 				$this->tag_model->add_tag($default_tag);
-				redirect("account/statistics","refresh");
+				redirect("machine/statistics","refresh");
 			}
 			else{
 				$user_info =array('email'=>$_POST['email'],'password'=>$_POST['password']);
 				if($this->account_model->login($user_info)){
-					redirect("account/statistics","refresh");
+					redirect("machine/statistics","refresh");
 				}
 				else
 					echo "Failed";

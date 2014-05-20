@@ -1,5 +1,5 @@
 <?php $this->load->view("share/_header")?>
-<body class="main">
+<body class="main" style="overflow:hidden;">
 <div class="shadow-div">
         <div class="top">
 		<?php $this->load->view("share/_topnav");?>	
@@ -10,4 +10,5 @@
 	</div>
 	
 </div>
+
 </body>

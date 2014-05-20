@@ -63,6 +63,20 @@
 			}
 			return false;
 		}
+		
+		function get_statistics(){
+			if($this->session->userdata('uid')){
+				$result;
+				$this->db->select('id,name,user_id');
+				$query = $this->db->get_where("machines",array('user_id'=>$this->session->userdata('uid')))->result();
+				foreach($query as $machine_info){
+					$tasks = $this->db->get_where("tasks",array('machine_id'=>$machine_info->id))->result();
+					$count = count($tasks);
+					$result[$machine_info->name] = $count;
+				}
+				return $result;
+			}
+		}
 				
 	}
 

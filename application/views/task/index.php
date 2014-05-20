@@ -16,7 +16,6 @@
                 $(document).ready( function() {
                   //enabling stickUp on the '.navbar-wrapper' class
                 	$('.top').stickUp();
-			$('.add-button').stickUp();
                 });
               });
 

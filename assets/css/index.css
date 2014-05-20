@@ -57,6 +57,8 @@ body{
 	height:65px;
 	background:white;
 	padding:10px;
+	z-index:9999;
+        position: relative;
 }
 
 .top-nav{
@@ -92,17 +94,17 @@ body{
 
 .st-bt{
 	margin-top:150px;
-	margin-left:60px;
+	margin-left:40px;
 }
 
-.st-bt button[type="button"]{
+.st-bt a[type="button"]{
 	width:200px;
 	font-size:24px;
 	color:white;
 	background:#334D41;
 }
 
-#task-bt{
+#mt-bt{
 	margin-top:20px;
 }
 
@@ -153,4 +155,14 @@ body{
 
 .add-button{
 	margin-left:100px;
+}
+
+.gra{
+	height:80%;
+	margin-top:80px;
+	margin-left:80px;
+}
+
+#myChart{
+	margin-top:150px;
 }

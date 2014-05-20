@@ -15,4 +15,5 @@
 <script src= '<?= base_url()."assets/js/bootstrap-datetimepicker.js"?>' ></script>
 <link href= '<?= base_url()."assets/css/bootstrap-datetimepicker.min.css"?>' rel= "stylesheet" media= "screen" >
 <script src='<?=base_url()."assets/js/stickUp.min.js"?>'></script>
+<script src='<?=base_url()."assets/js/Chart.js"?>'></script>
 </head>

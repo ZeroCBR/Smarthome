@@ -19,7 +19,7 @@
 								<h2 class='text-center' style='text-transform:capitalize'>".$tag->tag_name."</h2>
 								<p class='tag-intro' style='font-size:16px'>".$tag->intro."</p>
 								<p class='text-center text-info'>Machine Counts: <strong>".$tags_count[$counter]."</strong></p>
-								<p>
+								<p style='padding-left: 18px;'>
 									<a class='btn btn-default tag-button' href='".site_url('machine/manager_tag')."/".$tag->id."'>
 										<span class='glyphicon glyphicon-wrench' role='button'></span> Manager
 								   	</a>

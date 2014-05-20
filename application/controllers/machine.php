@@ -20,6 +20,13 @@
 			}
 		}
 		
+                function statistics(){
+			$result = $this->get_statistics();
+                        $data = array("load_page"=>"share/_statistics_nav","result"=>$result);
+                        $this->load->view('public/index',$data);
+                }
+
+		
 		function add_machine(){
 			$machine_info = $_POST;
                         $machine_info['tag_id'] = intval($this->uri->segment(3));
@@ -133,6 +140,11 @@
 			$machine_list = $this->machine_model->list_machine($tag_id);
 			$data = array('load_page'=>'machine/machine_list','tag_id'=>$tag_id, 'machine_list' => $machine_list);
 			$this->load->view('machine/index',$data);	
+		}
+		
+		function get_statistics(){
+			$result = $this->machine_model->get_statistics();
+			return $result;
 		}
 	
 	}
