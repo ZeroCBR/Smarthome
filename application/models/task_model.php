@@ -21,6 +21,8 @@
 				$task['machine_id'] = $id;
 				$task['deadline'] = $task_inf['time'];
 				$this->db->insert("tasks",$task);
+				$result = $this->db->get_where("tasks",array('machine_id'=>$id,'deadline'=>$task_inf['time']))->result();
+				$task['id']=$result[0]->id;
 				if($this->session->userdata('uid')){
 					$task += array('uid'=>$this->session->userdata('uid'));
 					$mess = packing($task);
