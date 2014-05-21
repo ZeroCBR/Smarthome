@@ -77,6 +77,10 @@
 				return $result;
 			}
 		}
+		
+		function noti(){
+			
+		}
 				
 	}
 

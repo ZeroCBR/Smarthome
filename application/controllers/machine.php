@@ -146,6 +146,11 @@
 			$result = $this->machine_model->get_statistics();
 			return $result;
 		}
+		
+		function noti(){
+			$data['load_page'] = "machine/noti";
+			$this->load->view('machine/index',$data);
+		}
 	
 	}
 
