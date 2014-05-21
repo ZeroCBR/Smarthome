@@ -149,6 +149,7 @@
 		
 		function noti(){
 			$data['load_page'] = "machine/noti";
+			$data['noti_list'] = $this->machine_model->noti();
 			$this->load->view('machine/index',$data);
 		}
 	

@@ -79,7 +79,14 @@
 		}
 		
 		function noti(){
-			
+			if($this->session->userdata('uid')){
+				$machines = $this->db->get_where("machines",array('user_id'=>$this->session->userdata('uid')))->result();
+				$result;
+				foreach($machines as $machine){
+					$result[] = $this->db->get_where("tasks",array('machine_id'=>$machine->id))->result();
+				}
+				return $result;
+			} 	
 		}
 				
 	}
