@@ -21,7 +21,7 @@
 								<p class='text-center text-info'>Machine Counts: <strong>".$tags_count[$counter]."</strong></p>
 								<p style='padding-left: 18px;'>
 									<a class='btn btn-default tag-button' href='".site_url('machine/manager_tag')."/".$tag->id."'>
-										<span class='glyphicon glyphicon-wrench' role='button'></span> Manager
+										<span class='glyphicon glyphicon-wrench' role='button'></span> Manage
 								   	</a>
 	                                                                <button class='delete-tag btn btn-warning tag-button' data-toggle='modal' data-target= '#delete_tag_modal'  data-id = ".$tag->id." type = 'button'>
 

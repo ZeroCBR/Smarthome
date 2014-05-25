@@ -12,13 +12,26 @@
 		
 		function index(){
 
-			//$this->load->view('share/_login_nav');	
-			$id = intval($this->uri->segment(3));
-
+			//$this->load->view('share/_login_nav');
+			if(!$this->session->userdata('type')){
+				$id = intval($this->uri->segment(3));
+			}
+			else{
+				$id = $_POST['mid'];
+			}
 			$task_list = $this->task_model->list_task($id);
 			
-			$data = array("task_list"=>$task_list,"id"=>$id, "load_page"=>"task/task_list");
-			$this->load->view("task/index",$data);
+			if(!$this->session->userdata('type')){
+				$data = array("task_list"=>$task_list,"id"=>$id, "load_page"=>"task/task_list");
+				$this->load->view("task/index",$data);
+			}
+			else{		
+				$result;		
+				foreach($task_list as $task){
+					$result[] = array("deadline"=>$task->deadline,"title"=>$task->title);
+				}
+				echo json_encode($result);
+			}
 		}
 
 
@@ -51,9 +64,18 @@
 
 
 		function add_task(){
-			$mid = intval($this->uri->segment(3));
-			if($this->task_model->add_task($_POST,$mid)){
-				redirect("task/index/".$mid,'refresh');
+			if(!$this->session->userdata("type")){
+				$mid = intval($this->uri->segment(3));
+				if($this->task_model->add_task($_POST,$mid)){
+        	                        redirect("task/index/".$mid,'refresh');
+	      		        }
+
+			}
+			else{
+				$mid = $_POST['mid'];
+				if($this->task_model->add_task($_POST,$mid)){
+					$this->index();	
+				}
 			}
 		}
 

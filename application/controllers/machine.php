@@ -25,7 +25,17 @@
                         $data = array("load_page"=>"share/_statistics_nav","result"=>$result);
                         $this->load->view('public/index',$data);
                 }
-
+			
+		function list_machines(){
+			if($this->session->userdata('uid')){
+				$machine_list = $this->machine_model->list_machines();
+				$result = array();
+				foreach($machine_list as $machine){
+					$result[] = array("id"=>$machine->id, "name"=>$machine->name);
+				} 
+				echo json_encode($result);
+			}
+		}
 		
 		function add_machine(){
 			$machine_info = $_POST;
@@ -137,7 +147,7 @@
 		
 		function manager_tag(){
 			$tag_id = intval($this->uri->segment(3));
-			$machine_list = $this->machine_model->list_machine($tag_id);
+			$machine_list = $this->machine_model->list_machines($tag_id);
 			$data = array('load_page'=>'machine/machine_list','tag_id'=>$tag_id, 'machine_list' => $machine_list);
 			$this->load->view('machine/index',$data);	
 		}

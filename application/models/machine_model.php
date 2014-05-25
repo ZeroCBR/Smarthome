@@ -10,9 +10,14 @@
 			parent::__construct();
 		}
 
-		function list_machine($tag_id){
-			$machine_list=$this->db->get_where('machines', array('user_id'=>$this->session->
-			userdata('uid'), 'tag_id'=>$tag_id)) -> result();
+		function list_machines($tag_id=NULL){
+			if(isset($tag_id)){
+				$machine_list=$this->db->get_where('machines', array('user_id'=>$this->session->
+				userdata('uid'), 'tag_id'=>$tag_id)) -> result();
+			}
+			else{
+				$machine_list = $this->db->get_where('machines',array('user_id'=>$this->session->userdata('uid')))->result();
+			}
 			return $machine_list;
 		}	
 	

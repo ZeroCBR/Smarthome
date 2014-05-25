@@ -26,11 +26,21 @@
 			}
 			else{
 				$user_info =array('email'=>$_POST['email'],'password'=>$_POST['password']);
-				if($this->account_model->login($user_info)){
-					redirect("machine/statistics","refresh");
+				if(!isset($_POST['type'])){
+					if($this->account_model->login($user_info)){
+						redirect("machine/statistics","refresh");
+					}
+					else
+						echo "Failed";
 				}
-				else
-					echo "Failed";
+				else{
+					if($this->account_model->login($user_info)){
+						$this->session->set_userdata(array('type'=>$_POST['type']));
+						redirect("machine/list_machines");
+					}
+					else 
+						echo "Failed";
+				}
 			}
 		}
 

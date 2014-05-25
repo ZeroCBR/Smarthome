@@ -29,7 +29,7 @@
                                                 <div class='col-md-4  machine-btn-group'>
                                                         <a class='btn btn-default tag-button edit-task' data-toggle='modal' data-target= '#edit_task_modal'  data-id ='".$task->id."' type = 'button'>
                 
-                                                                <span class='glyphicon glyphicon-wrench' role='button'></span> Manager
+                                                                <span class='glyphicon glyphicon-wrench' role='button'></span> Manage
                                                         </a>
                                                         <button class='delete-task btn btn-warning tag-button' data-toggle='modal' data-target= '#delete_task_modal'  data-id ='".$task->id."' type = 'button'>
 

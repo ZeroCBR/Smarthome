@@ -25,7 +25,7 @@
 						<div class='col-md-4  machine-btn-group'>
                                                         <a class='btn btn-default tag-button' href='".site_url('task')."/index/".$machine->id."'>
                 
-								<span class='glyphicon glyphicon-wrench' role='button'></span> Manager
+								<span class='glyphicon glyphicon-wrench' role='button'></span> Manage
 	                                                </a>
                                                         <button class='delete-machine btn btn-warning tag-button' data-toggle='modal' data-target= '#delete_machine_modal'  data-id ='".$machine->id."' type = 'button'>
 
