@@ -58,7 +58,8 @@ $(document).ready(function(){
 	$(".form_datetime").datetimepicker({
 		format: 'yyyy-mm-dd hh:ii',
 		autoclose: true,
-		todayBtn:true
+		todayBtn:true,
+		minuteStep:1
 		});       
 
 	$('.edit-task').click(function(event){
