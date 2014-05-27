@@ -79,7 +79,9 @@
 					$count = count($tasks);
 					$result[$machine_info->name] = $count;
 				}
-				return $result;
+				if(isset($result)){
+					return $result;
+				}
 			}
 		}
 		
